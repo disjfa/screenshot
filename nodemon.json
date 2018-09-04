@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "routes",
+        "views"
+    ],
+    "exec": "node ./bin/www",
+    "ext": "js twig"
+}

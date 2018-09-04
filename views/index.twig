@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <div class="container pt-3">
+        <h1>Make a screenshot</h1>
+        {% if messages is defined %}
+            {% for key, data in messages %}
+                <div class="alert alert-{{ key }}">
+                    {% for line in data %}
+                        {{ line }}<br>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form action="/" method="post">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <div class="form-group">
+                <label for="input-url">Website address</label>
+                <input type="url" class="form-control" id="input-url" name="screenshot" aria-describedby="url-help" placeholder="Enter url">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Make screenshot</button>
+            </div>
+        </form>
+    </div>
+    {% if images is defined %}
+        <div class="bg-light">
+            {% for image in images %}
+                <div class="container pt-3">
+                    <h3>{{ image.title }}</h3>
+                    <div class="text-center">
+                        <div class="bg-dark py-2 px-2">
+                            <img src="{{ image.url }}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="bg-light">
+            <div class="container py-3">
+                <h3>Choose a url you want to parse</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae doloribus eos eveniet labore. Deleniti, doloribus eligendi in inventore laboriosam laborum nesciunt officia optio reiciendis repellat sed soluta tenetur totam.</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
