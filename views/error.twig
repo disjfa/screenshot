@@ -1,7 +1,9 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <h1>{{ message }}</h1>
-    <p>Status: {{ error.status }}</p>
-    <a href="/" class="btn btn-primary">Go back</a>
+    <div class="container py-3">
+        <h1>{{ message }}</h1>
+        <p>Status: {{ error.status }}</p>
+        <a href="/" class="btn btn-primary">Go back</a>
+    </div>
 {% endblock %}

@@ -21,8 +21,9 @@ app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true,
+  indentedSyntax: false, // true = .sass and false = .scss
+  sourceMap: process.env.NODE_ENV !== 'production',
+  outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'extended',
   includePaths: ['./node_modules'],
 }));
 app.use(express.static(path.join(__dirname, 'public')));
