@@ -25,7 +25,6 @@ router.post('/', csrfProtection, async function (req, res, next) {
   }
 
   const myURL = new url.parse(screenshot);
-  console.log(myURL);
   const slash = new RegExp(/^\/+/g);
   const replace = new RegExp(/[^a-z0-9]/g);
   let uri = myURL.path;
