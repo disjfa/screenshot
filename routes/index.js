@@ -45,13 +45,16 @@ router.post('/', csrfProtection, async function (req, res, next) {
 
   await page.setViewport({ width: 375, height: 667 });
   await page.screenshot({ path: dirName + '/' + uri + '-xs.png' });
-  images.push({ title: 'Small', url: '/images/' + myURL.host + '/' + uri + '-xs.png' });
-  await page.setViewport({ width: 1024, height: 768 });
+  images.push({ title: 'Phone', url: '/images/' + myURL.host + '/' + uri + '-xs.png' });
+  await page.setViewport({ width: 768, height: 1024 });
   await page.screenshot({ path: dirName + '/' + uri + '-md.png' });
-  images.push({ title: 'Medium', url: '/images/' + myURL.host + '/' + uri + '-md.png' });
-  await page.setViewport({ width: 1920, height: 1080 });
+  images.push({ title: 'Tablet portrait', url: '/images/' + myURL.host + '/' + uri + '-md.png' });
+  await page.setViewport({ width: 1024, height: 768 });
   await page.screenshot({ path: dirName + '/' + uri + '-lg.png' });
-  images.push({ title: 'Large', url: '/images/' + myURL.host + '/' + uri + '-lg.png' });
+  images.push({ title: 'Tablet landscape', url: '/images/' + myURL.host + '/' + uri + '-lg.png' });
+  await page.setViewport({ width: 1920, height: 1080 });
+  await page.screenshot({ path: dirName + '/' + uri + '-xl.png' });
+  images.push({ title: 'Desktop', url: '/images/' + myURL.host + '/' + uri + '-xl.png' });
   await browser.close();
 
   return res.render('index', {
